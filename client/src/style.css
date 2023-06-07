@@ -1,0 +1,41 @@
+html {
+    height: 100%;
+
+}
+
+*,
+*::after,
+*::before {
+}
+
+body {
+    height: 100%;
+    box-sizing: border-box;
+    background-image: url(assets/AppImages/ShopImage/Background.png);
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    font-family: 'Cardo', serif;
+    color: bisque;
+    padding: 0;
+    margin: 0;
+}
+button {
+    cursor: pointer;
+    font-weight: bold;
+    background-color: bisque;
+    padding: 0;
+    border-radius: 15px;
+}
+#root {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.6486) 100%);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main {
+    flex: 1 1 auto;
+
+}
+
+

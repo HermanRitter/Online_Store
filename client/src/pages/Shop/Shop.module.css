@@ -1,0 +1,52 @@
+.storeMap {
+    flex: 1 1 auto;
+}
+.container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1300px;
+}
+.storeTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.storeNavbar {
+    justify-content: center;
+    margin-right: 12px;
+}
+.storeScroller {
+    margin-bottom: 60px;
+    width: 1000px;
+}
+
+.storeNavbarLogo {
+    padding: 10px;
+    border-radius: 5px 15px 15px 5px;
+    border: 4px solid bisque;
+    background-color: black;
+    margin-bottom: 55px;
+    width: 200px;
+    height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.scrollerLogoImg {
+    display: block;
+    height: 83px;
+}
+.navbarLogoText {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+h4 {
+    margin: 0;
+}

@@ -1,11 +1,13 @@
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import {observer} from "mobx-react-lite";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "./index";
 import {check} from "./http/userApi";
 import {Spinner} from "react-bootstrap";
+import Footer from "./components/Footer/Footer";
+import styles from "./style.css"
 
 const App = observer(() => {
     const {user} = useContext(Context)
@@ -17,17 +19,21 @@ const App = observer(() => {
                 user.setUser(true)
                 user.setIsAuth(true)
             }).finally(() => setLoading(false))
-        }, 1200)
+        }, 1500)
     }, [])
 
     if (loading) {
-        return <Spinner animation={'grow'}/>
+        return (<div style={{height: 100 + 'vh', display: "flex", justifyContent: "center", alignItems: 'center'}}>
+                <Spinner style={{height: 100 + 'px', width: 100 + 'px'}} animation={'border'}/>
+            </div>
+        )
     }
 
     return (
         <BrowserRouter>
             <NavBar/>
             <AppRouter/>
+            <Footer/>
         </BrowserRouter>
     )
 })

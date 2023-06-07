@@ -1,0 +1,31 @@
+.itemBord {
+    padding: 16px 0;
+    width: 90px;
+    height: 475px;
+    border-radius: 30px 15px 15px 30px;
+    background-color: black;
+    border-top: 4px solid bisque;
+    border-bottom: 4px solid bisque;
+    border-right: 4px solid bisque;
+    border-left: 4px solid bisque;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+}
+
+.itemVehicleImg {
+    display: block;
+    height: 75px;
+    padding: 10px;
+    background-color: black;
+    border-radius: 15px;
+    transition: all .4s;
+}
+.itemBordButton {
+    position: absolute;
+    width: 0;
+    color: transparent;
+    transition: all .4s;
+}

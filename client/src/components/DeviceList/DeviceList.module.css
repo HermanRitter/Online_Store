@@ -1,0 +1,16 @@
+.storeScrollerBox {
+    overflow: auto;
+    border: 8px solid bisque;
+    height: 800px;
+    max-width: 1000px;
+    padding: 30px;
+    border-radius: 35px 35px 350px 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: black;
+
+}
+.storeScrollerBox::-webkit-scrollbar {
+    width: 0;
+}

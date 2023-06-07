@@ -111,14 +111,6 @@ const deleteTransform = function (event) {
         carBtnActive.style.transform = 'scale(1.0)'
         carBtnActive.classList.remove('item__vehicle-img_active')
         carBtnActive.style.zIndex = '0'
-
-        // buttonActive.style.transition = 'all 0.4s'
-        // buttonActive.style.zIndex = '0'
-        // buttonActive.style.width = '0'
-        // buttonActive.style.color = 'bisque'
-        // buttonActive.innerHTML = ''
-        // buttonActive.remove()
-        // scaleUse()
     }
 }
 

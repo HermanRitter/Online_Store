@@ -1,0 +1,35 @@
+footer {
+    margin-top: 75px;
+}
+.footer__box {
+    border-top: 4px solid bisque;
+    border-left: 2px solid bisque;
+    border-right: 2px solid bisque;
+    border-bottom: 4px solid black;
+    border-top-left-radius: 70px;
+    border-top-right-radius: 70px;
+    background-color: black;
+}
+.footer__bottom {
+    font-size: 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 60px;
+}
+.footer__top {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    max-width: 250px;
+    max-height: 40px;
+    background-color: bisque;
+    border-top-left-radius: 70px;
+    border-top-right-radius: 70px;
+}
+.footer_link {
+    width: 280px;
+}

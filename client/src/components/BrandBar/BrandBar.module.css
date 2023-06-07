@@ -1,0 +1,62 @@
+.storeScrollerTopContainer {
+    background-color: black;
+    border: 4px solid bisque;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    margin-bottom: 50px;
+}
+.scrollerWrapper {
+    width: 720px;
+    margin: 0 auto;
+    border: solid 2px bisque;
+    border-radius: 15px;
+}
+.storeScrollerTop {
+    overflow: hidden;
+    max-width: 900px;
+    height: 80px;
+    background-color: bisque;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+.sliderTrack {
+    display: flex;
+    transition: .6s;
+}
+.storeBrandImage {
+    display: block;
+    height: 72px;
+    width: 15%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    padding: 10px;
+    transition: all 0.3s;
+}
+.btn {
+    color: black;
+    font-size: 20px;
+    vertical-align: center;
+    background-color: blueviolet;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    text-align: center;
+    border: solid 2px bisque;
+    transition: all 0.3s;
+}
+
+.btn:disabled {
+    scale: 0.94;
+    opacity: 0.8;
+}
+.btnPrev {
+    position: absolute;
+    left: 50px;
+    top: 30px;
+}
+.btnNext {
+    position: absolute;
+    left: 904px;
+    top: 30px;
+}

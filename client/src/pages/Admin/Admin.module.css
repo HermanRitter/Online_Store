@@ -1,0 +1,61 @@
+.main {
+    flex: 1 1 auto;
+}
+.container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1300px;
+}
+.adminBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.adminItem {
+    text-align: center;
+}
+.adminItemBox {
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 4px solid bisque;
+    background-color: black;
+    border-radius: 35px 35px 10px 10px;
+}
+.adminImage {
+    margin: -1px;
+    display: block;
+    height: 300px;
+    border-radius: 30px 30px 5px 5px;
+}
+.adminImageType {
+    padding: 50px;
+    background-color: bisque;
+}
+.adminItemTittle {
+    font-size: 2.0em;
+    margin: 20px auto;
+    font-weight: bold;
+}
+.adminImageBrand {
+    padding: 50px;
+    background-color: bisque;
+}
+.adminButton {
+    height: 70px;
+    width: 100%;
+    border: 4px solid bisque;
+    border-radius: 10px 10px 100px 100px;
+    background-color: blueviolet;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.adminButtonImg {
+    height: 40px;
+    display: block;
+}
