@@ -7,7 +7,7 @@ import DeviceList from "../../components/DeviceList/DeviceList";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
 import {fetchBrand, fetchDevices, fetchType} from "../../http/deviceApi";
-import Pages from "../../components/Pages";
+import Pages from "../../components/Pages/Pages";
 import logo from "../../assets/AppImages/ShopImage/logo.png"
 import styles from "./Shop.module.css"
 import ShopLocation from "../../components/ShopLocation/ShopLocation";
@@ -18,19 +18,18 @@ const Shop = observer(() => {
     useEffect(() => {
         fetchType().then(data => device.setTypes(data))
         fetchBrand().then(data => device.setBrands(data))
-        fetchDevices(null, null, 1, 3).then(data => {
+        fetchDevices(null, null, 1, 9).then(data => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
     }, [])
 
     useEffect(() => {
-        fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page, 3).then(data => {
+        fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page, 9).then(data => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
     }, [device.page, device.selectedType, device.selectedBrand])
-
     return (
         <div className={styles.storeMap}>
             <div className={styles.container}>

@@ -9,6 +9,7 @@
 .storeTop {
     display: flex;
     justify-content: space-between;
+    height: 1100px;
 }
 
 .storeNavbar {
@@ -18,6 +19,8 @@
 .storeScroller {
     margin-bottom: 60px;
     width: 1000px;
+    display: flex;
+    flex-direction: column;
 }
 
 .storeNavbarLogo {
@@ -25,9 +28,9 @@
     border-radius: 5px 15px 15px 5px;
     border: 4px solid bisque;
     background-color: black;
-    margin-bottom: 55px;
+    margin-bottom: 50px;
     width: 200px;
-    height: 112px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: space-between;

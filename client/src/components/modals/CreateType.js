@@ -4,9 +4,24 @@ import {createType} from "../../http/deviceApi";
 
 const CreateType = ({show, onHide}) => {
     const [value, setValue] = useState('')
+    const [img1, setImage1] = useState(null)
+    const [img2, setImage2] = useState(null)
+
+    const selectFile1 = event => {
+        setImage1(event.target.files[0])
+    }
+    const selectFile2 = event => {
+        setImage2(event.target.files[0])
+    }
 
     const addType = () => {
-        createType({name: value}).then(data => {
+        const formData = new FormData()
+
+        formData.append("name", value)
+        formData.append("img1", img1)
+        formData.append("img2", img2)
+
+        createType(formData).then(data => {
             setValue('')
             onHide()
         })
@@ -28,6 +43,14 @@ const CreateType = ({show, onHide}) => {
                 <Form.Control value={value}
                               onChange={event => setValue(event.target.value)}
                               placeholder={'Введите название типа'}/>
+                <Form.Control
+                    onChange={selectFile1}
+                    className='mt-3'
+                    type='file'/>
+                <Form.Control
+                    onChange={selectFile2}
+                    className='mt-3'
+                    type='file'/>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant={'outline-danger'} onClick={onHide}>Закрыть</Button>

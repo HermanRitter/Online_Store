@@ -20,20 +20,45 @@ const BasketDevice = sequelize.define('basket_device', {
 
 const Device = sequelize.define('device', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, unique: true, allowNull: false},
-    price: {type: DataTypes.INTEGER, allowNull: false},
-    rating: {type: DataTypes.INTEGER, defaultValue: 0},
-    img: {type: DataTypes.STRING, allowNull: false},
+    name: {type: DataTypes.STRING, allowNull: false},
+    model: {type: DataTypes.STRING, allowNull: false},
+    price: {type: DataTypes.STRING, allowNull: false},
+    year: {type: DataTypes.STRING, allowNull: false},
+    body: {type: DataTypes.STRING, allowNull: false},
+    drive: {type: DataTypes.STRING, allowNull: false},
+    engine: {type: DataTypes.STRING, allowNull: false},
+    wheel: {type: DataTypes.STRING, allowNull: false},
+    more: {type: DataTypes.TEXT, allowNull: false},
+    rating: {type: DataTypes.STRING, defaultValue: 0},
+    img1: {type: DataTypes.STRING, allowNull: false},
+    img2: {type: DataTypes.STRING, allowNull: false},
+    img3: {type: DataTypes.STRING, allowNull: false},
+    img4: {type: DataTypes.STRING, allowNull: false},
+    img5: {type: DataTypes.STRING, allowNull: false},
+    img6: {type: DataTypes.STRING, allowNull: false},
+    img7: {type: DataTypes.STRING, allowNull: false},
+    img8: {type: DataTypes.STRING, allowNull: false},
+    img9: {type: DataTypes.STRING, allowNull: false},
+    img10: {type: DataTypes.STRING, allowNull: false},
+    imgColor: {type: DataTypes.STRING, allowNull: false},
 })
 
 const Type = sequelize.define('type', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
+    img1: {type: DataTypes.STRING, allowNull: false},
+    img2: {type: DataTypes.STRING, allowNull: false},
 })
 
 const Brand = sequelize.define('brand', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
+    description: {type: DataTypes.TEXT, unique: true, allowNull: false},
+    imgBrand: {type: DataTypes.STRING, allowNull: false},
+    imgBrandHistory1: {type: DataTypes.STRING, allowNull: false},
+    imgBrandHistory2: {type: DataTypes.STRING, allowNull: false},
+    imgBrandHistory3: {type: DataTypes.STRING, allowNull: false},
+    imgBrandHistory4: {type: DataTypes.STRING, allowNull: false}
 })
 
 const Rating = sequelize.define('rating', {

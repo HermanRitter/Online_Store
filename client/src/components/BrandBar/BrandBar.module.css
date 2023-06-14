@@ -5,6 +5,7 @@
     border-radius: 15px;
     position: relative;
     margin-bottom: 50px;
+    height: 110px;
 }
 .scrollerWrapper {
     width: 720px;
@@ -44,6 +45,7 @@
     text-align: center;
     border: solid 2px bisque;
     transition: all 0.3s;
+
 }
 
 .btn:disabled {
@@ -54,9 +56,11 @@
     position: absolute;
     left: 50px;
     top: 30px;
+
 }
 .btnNext {
     position: absolute;
     left: 904px;
     top: 30px;
+
 }

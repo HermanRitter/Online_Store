@@ -6,18 +6,18 @@ import headerStyles from "../NavBar/NavBar.module.css"
 const Footer = () => {
     return (
         <footer>
-            <div className={styles.footer__top}><h3 className={headerStyles.header__bottomText}>Ritter & Partners
+            <div className={styles.footer__top}><h3 className={headerStyles.headerBottomText}>Ritter & Partners
                 corp.</h3></div>
             <div className={styles.footer__box}>
                 <div className={headerStyles.container}>
                     <div className={styles.footer__bottom}>
                         <a href="tel:+79999009090"
-                           className={headerStyles.header__link + ' ' + styles.footer_link}>+7(999)-900-90-90</a>
+                           className={headerStyles.headerLink + ' ' + styles.footer_link}>+7(999)-900-90-90</a>
                         <div className="header__logo">
-                            <img className={headerStyles.logo__img} src={logo} alt="Ritter"/>
+                            <img className={headerStyles.logoImg + ' ' + styles.footerLogoImg} src={logo} alt="Ritter"/>
                         </div>
                         <a href="mailto:Retter&Partners@mail.com"
-                           className={headerStyles.header__link + ' ' + styles.footer_link}>Ritter&Partners@mail.com</a>
+                           className={headerStyles.headerLink + ' ' + styles.footer_link}>Ritter&Partners@mail.com</a>
                     </div>
                 </div>
             </div>

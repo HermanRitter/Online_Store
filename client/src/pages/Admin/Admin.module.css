@@ -53,9 +53,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    transition: all .4s;
+}
+.adminButton:hover {
+    background-color: seagreen;
 }
 .adminButtonImg {
     height: 40px;
     display: block;
+    transition: all .4s;
 }

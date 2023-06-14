@@ -18,6 +18,7 @@ const App = observer(() => {
             let promise = check().then(data => {
                 user.setUser(true)
                 user.setIsAuth(true)
+                user.setAdmin(data.role)
             }).finally(() => setLoading(false))
         }, 1500)
     }, [])
@@ -31,7 +32,7 @@ const App = observer(() => {
 
     return (
         <BrowserRouter>
-            <NavBar/>
+            <NavBar admin={user.admin} />
             <AppRouter/>
             <Footer/>
         </BrowserRouter>
