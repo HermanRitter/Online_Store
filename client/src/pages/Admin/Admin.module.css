@@ -1,19 +1,24 @@
 .main {
     flex: 1 1 auto;
 }
+
 .container {
     padding: 0;
     margin: 0 auto;
     max-width: 1300px;
+    position: relative;
 }
+
 .adminBox {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .adminItem {
     text-align: center;
 }
+
 .adminItemBox {
     margin-bottom: 10px;
     text-align: center;
@@ -24,25 +29,30 @@
     background-color: black;
     border-radius: 35px 35px 10px 10px;
 }
+
 .adminImage {
     margin: -1px;
     display: block;
     height: 300px;
     border-radius: 30px 30px 5px 5px;
 }
+
 .adminImageType {
     padding: 50px;
     background-color: bisque;
 }
+
 .adminItemTittle {
     font-size: 2.0em;
     margin: 20px auto;
     font-weight: bold;
 }
+
 .adminImageBrand {
     padding: 50px;
     background-color: bisque;
 }
+
 .adminButton {
     height: 70px;
     width: 100%;
@@ -55,11 +65,32 @@
     align-items: center;
     transition: all .4s;
 }
+
 .adminButton:hover {
     background-color: seagreen;
 }
+
 .adminButtonImg {
     height: 40px;
     display: block;
     transition: all .4s;
+}
+
+.modalWrapper {
+    opacity: 0;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all .3s;
+}
+
+.typeModal {
+    margin: 10% auto;
+    width: 800px;
 }

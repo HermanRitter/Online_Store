@@ -24,6 +24,7 @@ const Auth = observer(() => {
 
 
     const click = async () => {
+        debugger
         try {
             let data
             if (isLogin) {
@@ -35,11 +36,9 @@ const Auth = observer(() => {
             user.setIsAuth(true)
             if (data.role === 'ADMIN') {
                 user.setAdmin('ADMIN')
-
             } else {
                 user.setUser('USER')
             }
-
             navigate(SHOP_ROUTE)
         } catch (e) {
             alert(e.response.data.message)
@@ -66,6 +65,9 @@ const Auth = observer(() => {
         <div className={styles.main}>
             <div className={styles.container}>
                 <div className={styles.login__box}>
+                    <h1 className={styles.loginBoxTittle}>{
+                        isLogin ? 'Login' : 'Registration'
+                    }</h1>
                     <h1 className={styles.login__tittle}>WELCOME</h1>
                     <div className={styles.form__box}>
                         <form action="#" className="login-form">

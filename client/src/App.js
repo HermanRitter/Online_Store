@@ -4,22 +4,24 @@ import NavBar from "./components/NavBar/NavBar";
 import {observer} from "mobx-react-lite";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "./index";
-import {check} from "./http/userApi";
+import {check, refresh} from "./http/userApi";
 import {Spinner} from "react-bootstrap";
 import Footer from "./components/Footer/Footer";
 import styles from "./style.css"
 
 const App = observer(() => {
     const {user} = useContext(Context)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         setTimeout(() => {
-            let promise = check().then(data => {
-                user.setUser(true)
-                user.setIsAuth(true)
-                user.setAdmin(data.role)
-            }).finally(() => setLoading(false))
+            if (localStorage.getItem('token')) {
+                refresh().then(data => {
+                    user.setUser(true)
+                    user.setIsAuth(true)
+                    user.setAdmin(data.role)
+                }).finally(() => setLoading(false))
+            }
         }, 1500)
     }, [])
 

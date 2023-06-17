@@ -11,6 +11,7 @@ import styles from "./NavBar.module.css"
 import styleContainer from "../../style.css"
 import logoImg from "../../assets/AppImages/ShopImage/logo.png"
 import {adminBtnChanger} from "./NavBarAdminBtn";
+import {logout} from "../../http/userApi";
 
 const NavBar = ({admin}) => {
     const navigate = useNavigate()
@@ -23,6 +24,10 @@ const NavBar = ({admin}) => {
     useEffect(() => {
         adminBtnChanger(user.admin, adminBtn.current, adminBtnText.current, logo.current)
     }, [admin])
+
+    const trueLogout = async () => {
+        await logout()
+    }
 
     const logOut = () => {
         if (user.admin === 'ADMIN') {
@@ -39,12 +44,16 @@ const NavBar = ({admin}) => {
             setTimeout(() => {
                 adminBtn.current.style.opacity = '0'
             }, 2000)
-            setTimeout(() => {
+            setTimeout( () => {
                 user.setIsAuth(false)
                 user.setAdmin('USER')
             }, 3000)
+            setTimeout( () => {
+
+            }, 3000)
             user.setUser({})
         }
+        logout()
     }
     return (
         <header className={styles.header}>

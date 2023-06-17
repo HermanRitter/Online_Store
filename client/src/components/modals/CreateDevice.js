@@ -3,8 +3,11 @@ import {Button, Col, Dropdown, Form, Modal, Row} from "react-bootstrap";
 import {Context} from "../../index";
 import {createDevice, fetchBrand, fetchType} from "../../http/deviceApi";
 import {observer} from "mobx-react-lite";
+import styles from "./modals.module.css";
+import {inputChanger} from "./inputChanger";
+import addImage from "../../assets/AppImages/AdminImages/add1.png";
 
-const CreateDevice = observer(({show, onHide})   => {
+const CreateDevice = observer(({carModal, closeModal}) => {
     useEffect(() => {
         fetchType().then(data => device.setTypes(data))
         fetchBrand().then(data => device.setBrands(data))
@@ -48,36 +51,47 @@ const CreateDevice = observer(({show, onHide})   => {
     }
     const selectFile = event => {
         setFile(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile2 = event => {
         setFile2(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile3 = event => {
         setFile3(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile4 = event => {
         setFile4(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile5 = event => {
         setFile5(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile6 = event => {
         setFile6(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile7 = event => {
         setFile7(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile8 = event => {
         setFile8(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile9 = event => {
         setFile9(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile10 = event => {
         setFile10(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectColor = event => {
         setImgColor(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const addDevice = () => {
         const formData = new FormData()
@@ -107,162 +121,268 @@ const CreateDevice = observer(({show, onHide})   => {
         formData.append('brandId', device.selectedBrand.id)
         formData.append('typeId', device.selectedType.id)
         formData.append('info', JSON.stringify(info))
-        createDevice(formData).then(data => onHide())
+        createDevice(formData).then(data => {
+            closeModal(carModal)
+        })
 
     }
     return (
-        <Modal
-            show={show}
-            onHide={onHide}
-            size="lg"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить новый тип
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form>
-                    <Dropdown className='mt-2 mb-2'>
+        <form className={styles.form}>
+            <div onClick={() => closeModal(carModal)} className={styles.formCloseBtn}></div>
+            <div className={styles.formTittleBox}>
+                <h1 className={styles.formTittle}>
+                    Add Car
+                </h1>
+            </div>
+            <div className={styles.formInputsBox}>
+                <div className='d-flex justify-content-between '>
+                    <Dropdown>
                         <Dropdown.Toggle>{device.selectedType.name || 'Выберите тип'}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {device.types.map(type =>
-                                <Dropdown.Item onClick={() => device.setSelectedType(type)} key={type.id}>{type.name}</Dropdown.Item>)}
+                                <Dropdown.Item onClick={() => device.setSelectedType(type)}
+                                               key={type.id}>{type.name}</Dropdown.Item>)}
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Dropdown className='mt-2 mb-2'>
+                    <Dropdown>
                         <Dropdown.Toggle>{device.selectedBrand.name || 'Выбериет бренд'}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {device.brands.map(brand =>
-                                <Dropdown.Item onClick={() => device.setSelectedBrand(brand)} key={brand.id}>{brand.name}</Dropdown.Item>)}
+                                <Dropdown.Item onClick={() => device.setSelectedBrand(brand)}
+                                               key={brand.id}>{brand.name}</Dropdown.Item>)}
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Form.Control
-                        value={name}
-                        onChange={event => setName(event.target.value)}
-                        className='mt-3'
-                        placeholder='Введите название устройтва'/>
-                    <Form.Control
-                        value={model}
-                        onChange={event => setModel(event.target.value)}
-                        className='mt-3'
-                        placeholder='Введите название модель'/>
-                    <Form.Control
-                        value={price}
-                        onChange={event => setPrice(Number(event.target.value))}
-                        className='mt-3'
-                        placeholder='Введите стоимость устройства'
-                        type='number'/>
-                    <Form.Control
-                        value={year}
-                        onChange={event => setYear(event.target.value)}
-                        className='mt-3'
-                        placeholder='Введите год производства устройства'/>
-                    <Form.Control
-                        value={body}
-                        onChange={event => setBody(event.target.value)}
-                        className='mt-3'
-                        placeholder='Введите тип кузова устройства'/>
-                    <Form.Control
-                        value={engine}
-                        onChange={event => setEngine(event.target.value)}
-                        className='mt-3'
-                        placeholder='Введите Объем двигателя устройства'/>
-                    <Form.Control
-                        value={drive}
-                        onChange={event => setDrive(event.target.value)}
-                        className='mt-3'
-                        placeholder='Введите тип привода устройства'/>
-                    <Form.Control
-                        value={wheel}
-                        onChange={event => setWheel(event.target.value)}
-                        className='mt-3'
-                        placeholder='Введите положение руля устройства'/>
-                    <Form.Control
-                        value={more}
-                        onChange={event => setMore(event.target.value)}
-                        className='mt-3'
-                        type='textarea'
-                        placeholder='Введите подробное описание'/>
-                    <Form.Control
-                        onChange={selectFile}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile2}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile3}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile4}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile5}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile6}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile7}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile8}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile9}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectFile10}
-                        className='mt-3'
-                        type='file'/>
-                    <Form.Control
-                        onChange={selectColor}
-                        className='mt-3'
-                        type='file'/>
-                    <hr/>
-                    <Button variant='outline-dark'
-                            onClick={addInfo}>
-                        Добавить новое свойство
-                    </Button>
-                    {info.map(i =>
-                        <Row key={i.number} className='mt-4'>
-                            <Col md={4}>
-                                <Form.Control value={i.title}
-                                              onChange={(event) => changeInfo('title', event.target.value, i.number)}
-                                              placeholder='Введите название свойства'
-                                />
-                            </Col>
-                            <Col md={4}>
-                                <Form.Control value={i.description}
-                                              onChange={(event) => changeInfo('description', event.target.value, i.number)}
-                                              placeholder='Введите описание свойства'
-                                />
-                            </Col>
-                            <Col md={4}>
-                                <Button onClick={() => removeInfo(i.number)} variant='outline-danger'>
-                                    Удалить
-                                </Button>
-                            </Col>
-                        </Row>
-                    )}
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant={'outline-danger'} onClick={onHide}>Закрыть</Button>
-                <Button variant={'outline-success'} onClick={addDevice}>Добавить</Button>
-            </Modal.Footer>
-        </Modal>
-    );
+                </div>
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Car name:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={name}
+                           onChange={event => setName(event.target.value)}
+                           placeholder={'Введите название авто'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Car Brand:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={model}
+                           onChange={event => setModel(event.target.value)}
+                           placeholder={'Введите название модели'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Car Price:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={price}
+                           onChange={event => setPrice(Number(event.target.value))}
+                           placeholder={'Введите цену авто'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Year of Issue:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={year}
+                           onChange={event => setYear(event.target.value)}
+                           placeholder={'Введите год производства авто'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Type of Body:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={body}
+                           onChange={event => setBody(event.target.value)}
+                           placeholder={'Введите тип кузова авто'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Engine of copasity:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={engine}
+                           onChange={event => setEngine(event.target.value)}
+                           placeholder={'Введите Объем двигателя авто'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Type of Drive:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={drive}
+                           onChange={event => setDrive(event.target.value)}
+                           placeholder={'Введите тип привода авто'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Wheel side:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={wheel}
+                           onChange={event => setWheel(event.target.value)}
+                           placeholder={'Введите тип привода авто'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>More about car:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={more}
+                           onChange={event => setMore(event.target.value)}
+                           placeholder={'Введите тип привода авто'}
+                           type='textarea'/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile}
+                               name="file" type="file" id='input__fileDevice1'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice1" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 2:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile2}
+                               name="file" type="file" id='input__fileDevice2'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice2" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 3:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile3}
+                               name="file" type="file" id='input__fileDevice3'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice3" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 4:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile4}
+                               name="file" type="file" id='input__fileDevice4'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice4" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 5:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile5}
+                               name="file" type="file" id='input__fileDevice5'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice5" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 6:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile6}
+                               name="file" type="file" id='input__fileDevice6'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice6" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 7:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile7}
+                               name="file" type="file" id='input__fileDevice7'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice7" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 8:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile8}
+                               name="file" type="file" id='input__fileDevice8'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice8" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 9:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile9}
+                               name="file" type="file" id='input__fileDevice9'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice9" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 10:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile10}
+                               name="file" type="file" id='input__fileDevice10'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileDevice10" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image of Color:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectColor}
+                               name="file" type="file" id='input__selectColor'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__selectColor" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                {/*<hr/>*/}
+                {/*<Button variant='outline-dark'*/}
+                {/*        onClick={addInfo}>*/}
+                {/*    Добавить новое свойство*/}
+                {/*</Button>*/}
+                {/*{info.map(i =>*/}
+                {/*    <Row key={i.number} className='mt-4'>*/}
+                {/*        <Col md={4}>*/}
+                {/*            <Form.Control value={i.title}*/}
+                {/*                          onChange={(event) => changeInfo('title', event.target.value, i.number)}*/}
+                {/*                          placeholder='Введите название свойства'*/}
+                {/*            />*/}
+                {/*        </Col>*/}
+                {/*        <Col md={4}>*/}
+                {/*            <Form.Control value={i.description}*/}
+                {/*                          onChange={(event) => changeInfo('description', event.target.value, i.number)}*/}
+                {/*                          placeholder='Введите описание свойства'*/}
+                {/*            />*/}
+                {/*        </Col>*/}
+                {/*        <Col md={4}>*/}
+                {/*            <Button onClick={() => removeInfo(i.number)} variant='outline-danger'>*/}
+                {/*                Удалить*/}
+                {/*            </Button>*/}
+                {/*        </Col>*/}
+                {/*    </Row>*/}
+                {/*)}*/}
+            </div>
+            <div className={styles.FormButtonsBox}>
+                <button className={styles.formBtn} onClick={addDevice}>
+                    <img src={addImage} className={styles.formBtnImg} alt="add"/>
+                </button>
+            </div>
+        </form>
+    )
 });
 
 export default CreateDevice;

@@ -30,6 +30,9 @@ button {
 button:focus {
     outline: 0;
 }
+input:focus {
+    outline: 0;
+}
 #root {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.6486) 100%);
     min-height: 100%;

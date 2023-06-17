@@ -10,6 +10,22 @@
     padding: 30px 80px;
     display: flex;
     justify-content: center;
+    position: relative;
+}
+.loginBoxTittle {
+    margin-top: 0;
+    position: absolute;
+    top: -54px;
+    right: 100px;
+    padding: 0 20px;
+    margin-bottom: 0;
+    text-decoration: underline;
+    color: black;
+    background-color: bisque;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-size: 42px;
+    font-weight: bold;
 }
 .login-form {
     width: 100%;
@@ -19,14 +35,14 @@
 }
 .login__tittle {
     border: 4px solid bisque;
-    margin: 0;
     font-size: 45px;
     display: block;
     border-radius: 15px;
     padding: 0 10px;
-    margin-bottom: 50px;
+    margin: 0 0 50px;
 }
 .login__box {
+
     height: 100%;
     width: 475px;
     margin: 0 auto;

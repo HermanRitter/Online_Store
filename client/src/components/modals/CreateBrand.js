@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import {Button, Form, Modal} from "react-bootstrap";
 import {createBrand} from "../../http/deviceApi";
+import styles from "./modals.module.css";
+import addImage from "../../assets/AppImages/AdminImages/add1.png";
+import {inputChanger} from "./inputChanger";
 
-const CreateBrand = ({show, onHide}) => {
+const CreateBrand = ({closeModal, brandModal}) => {
     const [value, setValue] = useState('')
     const [description, setDescription] = useState('')
     const [logoImg, setLogoImg] = useState(null)
@@ -13,18 +16,23 @@ const CreateBrand = ({show, onHide}) => {
 
     const selectFile1 = event => {
         setLogoImg(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile2 = event => {
         setHistoryImg1(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile3 = event => {
         setHistoryImg2(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile4 = event => {
         setHistoryImg3(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
     const selectFile5 = event => {
         setHistoryImg4(event.target.files[0])
+        inputChanger(event.target, event.target.files.length)
     }
 
     const addBrand = () => {
@@ -40,58 +48,98 @@ const CreateBrand = ({show, onHide}) => {
 
         createBrand(formData).then(data => {
             setValue('')
-            onHide()
+            closeModal(brandModal)
         })
     }
 
     return (
-        <Modal
-            show={show}
-            onHide={onHide}
-            size="lg"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить новый бренд
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form.Control value={value}
-                              className='mt-3'
-                              onChange={event => setValue(event.target.value)}
-                              placeholder={'Введите название бренда'}/>
-                <Form.Control value={description}
-                              className='mt-3'
-                              onChange={event => setDescription(event.target.value)}
-                              placeholder={'Введите описание бренда'}
-                              type={'textarea'}/>
-                <Form.Control
-                    onChange={selectFile1}
-                    className='mt-3'
-                    type='file'/>
-                <Form.Control
-                    onChange={selectFile2}
-                    className='mt-3'
-                    type='file'/>
-                <Form.Control
-                    onChange={selectFile3}
-                    className='mt-3'
-                    type='file'/>
-                <Form.Control
-                    onChange={selectFile4}
-                    className='mt-3'
-                    type='file'/>
-                <Form.Control
-                    onChange={selectFile5}
-                    className='mt-3'
-                    type='file'/>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant={'outline-danger'} onClick={onHide}>Закрыть</Button>
-                <Button variant={'outline-success'} onClick={addBrand}>Добавить</Button>
-            </Modal.Footer>
-        </Modal>
+        <form className={styles.form}>
+            <div onClick={() => closeModal(brandModal)} className={styles.formCloseBtn}></div>
+            <div className={styles.formTittleBox}>
+                <h1 className={styles.formTittle}>
+                    Add Brand
+                </h1>
+            </div>
+            <div className={styles.formInputsBox}>
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Name of Brand:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={value}
+                           onChange={event => setValue(event.target.value)}
+                           placeholder={'Введите название бренда'}/>
+                </div>
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Brand History:</p>
+                    <input className={styles.formInputText + ' ' + styles.formInput} value={description}
+                           onChange={event => setDescription(event.target.value)}
+                           placeholder={'Введите описание бренда'}/>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile1}
+                               name="file" type="file" id='input__fileBrand1'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileBrand1" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile2}
+                               name="file" type="file" id='input__fileBrand2'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileBrand2" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile3}
+                               name="file" type="file" id='input__fileBrand3'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileBrand3" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile4}
+                               name="file" type="file" id='input__fileBrand4'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileBrand4" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div className={styles.formInputBox}>
+                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <div className={styles.input__wrapper}>
+                        <input onChange={selectFile5}
+                               name="file" type="file" id='input__fileBrand5'
+                               className={styles.input + ' ' + styles.input__file} multiple/>
+                        <label htmlFor="input__fileBrand5" className={styles.input__file_button}>
+                            <span className={styles.input__file_button_text}>Выберите файл</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.FormButtonsBox}>
+                <button className={styles.formBtn} onClick={addBrand}>
+                    <img src={addImage} className={styles.formBtnImg} alt="add"/>
+                </button>
+            </div>
+        </form>
     );
 };
 
