@@ -41,7 +41,6 @@ const TypeBar = observer(() => {
     setTimeout(() => {
         let bordArray = Array.prototype.slice.call(bord.current.children)
         buttons = bordArray.slice(1)
-        console.log(buttons)
         for (let btn of buttons) {
             buttonsMap.set(Exclusive, btn)
         }
@@ -66,7 +65,6 @@ const TypeBar = observer(() => {
     //
     setTimeout(() => {
         for (let btn of buttons) {
-            console.log(btn)
             if (!btn.classList.contains('itemVehicleImgActive')) {
 
                 btn.onmouseover = function (event) {
@@ -84,10 +82,8 @@ const TypeBar = observer(() => {
         let newButtons = newBordArray.slice(1)
         let newButtonsMap = new Map()
         for (let newBtn of newButtons) {
-            console.log(newBtn.id)
             newButtonsMap.set(Exclusive, newBtn)
             for (let btn of newButtonsMap) {
-                console.log(bord.current)
                 let classArray = Array.from(btn[1].classList)
                 if (classArray.includes("itemVehicleImgActive")) {
                     btn[1].style.transition = 'all 0.4s'
@@ -114,7 +110,6 @@ const TypeBar = observer(() => {
         let carBtn
         carBtn = event.target
         carBtn.classList.add('itemVehicleImgActive')
-        console.log(carBtn.classList)
         carBtn.style.backgroundColor = 'bisque'
         carBtn.style.zIndex = '2'
         carBtn.src = img

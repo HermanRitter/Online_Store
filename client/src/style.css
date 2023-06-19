@@ -20,6 +20,9 @@ body {
     padding: 0;
     margin: 0;
 }
+textarea:focus {
+    outline: 0;
+}
 button {
     cursor: pointer;
     font-weight: bold;

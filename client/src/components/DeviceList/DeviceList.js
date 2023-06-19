@@ -7,7 +7,6 @@ import styles from "./DeviceList.module.css"
 import Pages from "../Pages/Pages";
 
 const DeviceList = observer(() => {
-    console.log('innn')
     const {device} = useContext(Context)
 
 
@@ -15,6 +14,9 @@ const DeviceList = observer(() => {
         <div>
             <div className={styles.storeScrollerBox}>
                 {device.devices.map(device => <DeviceItem key={device.id} device={device}/>)}
+                {device.devices.length === 0 &&
+                    <h1 className={styles.storeScrollerBoxText}>The car in this section does not yet exist...</h1>
+                }
             </div>
         </div>
     );

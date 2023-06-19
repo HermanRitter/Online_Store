@@ -15,3 +15,7 @@ min-height: 290px;
 .storeScrollerBox::-webkit-scrollbar {
     width: 0;
 }
+.storeScrollerBoxText {
+    padding: 10px;
+    margin: auto;
+}

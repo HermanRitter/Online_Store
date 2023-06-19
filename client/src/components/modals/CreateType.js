@@ -80,7 +80,7 @@ const CreateType = ({closeModal, typeModal}) => {
 
             </div>
             <div className={styles.FormButtonsBox}>
-                <button className={styles.formBtn} onClick={addType}>
+                <button className={styles.formBtn} type='button' onClick={addType}>
                     <img src={addImage} className={styles.formBtnImg} alt="add"/>
                 </button>
             </div>

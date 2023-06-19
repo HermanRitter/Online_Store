@@ -24,7 +24,6 @@ const Auth = observer(() => {
 
 
     const click = async () => {
-        debugger
         try {
             let data
             if (isLogin) {

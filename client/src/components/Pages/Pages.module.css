@@ -1,4 +1,15 @@
-
+.pagesBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    padding: 10px;
+    color: bisque;
+    border: 4px solid bisque;
+    border-radius: 20px;
+    background-color: blueviolet;
+    margin-right: 20px;
+}
 .pages {
     display: flex;
     justify-content: center;

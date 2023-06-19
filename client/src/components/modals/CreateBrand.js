@@ -67,9 +67,9 @@ const CreateBrand = ({closeModal, brandModal}) => {
                            onChange={event => setValue(event.target.value)}
                            placeholder={'Введите название бренда'}/>
                 </div>
-                <div className={styles.formInputBox}>
+                <div className={styles.formInputBox + ' ' + styles.formInputBoxTextArea}>
                     <p className={styles.formInputTittle}>Brand History:</p>
-                    <input className={styles.formInputText + ' ' + styles.formInput} value={description}
+                    <textarea className={styles.formInputText + ' ' + styles.formInputTextArea} value={description}
                            onChange={event => setDescription(event.target.value)}
                            placeholder={'Введите описание бренда'}/>
                 </div>
@@ -87,7 +87,7 @@ const CreateBrand = ({closeModal, brandModal}) => {
                 </div>
 
                 <div className={styles.formInputBox}>
-                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <p className={styles.formInputTittle}>Image 2:</p>
                     <div className={styles.input__wrapper}>
                         <input onChange={selectFile2}
                                name="file" type="file" id='input__fileBrand2'
@@ -99,7 +99,7 @@ const CreateBrand = ({closeModal, brandModal}) => {
                 </div>
 
                 <div className={styles.formInputBox}>
-                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <p className={styles.formInputTittle}>Image 3:</p>
                     <div className={styles.input__wrapper}>
                         <input onChange={selectFile3}
                                name="file" type="file" id='input__fileBrand3'
@@ -111,7 +111,7 @@ const CreateBrand = ({closeModal, brandModal}) => {
                 </div>
 
                 <div className={styles.formInputBox}>
-                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <p className={styles.formInputTittle}>Image 4:</p>
                     <div className={styles.input__wrapper}>
                         <input onChange={selectFile4}
                                name="file" type="file" id='input__fileBrand4'
@@ -123,7 +123,7 @@ const CreateBrand = ({closeModal, brandModal}) => {
                 </div>
 
                 <div className={styles.formInputBox}>
-                    <p className={styles.formInputTittle}>Image 1:</p>
+                    <p className={styles.formInputTittle}>Image 5:</p>
                     <div className={styles.input__wrapper}>
                         <input onChange={selectFile5}
                                name="file" type="file" id='input__fileBrand5'
@@ -135,7 +135,7 @@ const CreateBrand = ({closeModal, brandModal}) => {
                 </div>
             </div>
             <div className={styles.FormButtonsBox}>
-                <button className={styles.formBtn} onClick={addBrand}>
+                <button type='button' className={styles.formBtn} onClick={addBrand}>
                     <img src={addImage} className={styles.formBtnImg} alt="add"/>
                 </button>
             </div>

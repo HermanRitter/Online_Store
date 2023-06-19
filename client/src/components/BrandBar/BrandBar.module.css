@@ -26,6 +26,7 @@
     transition: .6s;
 }
 .storeBrandImage {
+    border-radius: 15px;
     display: block;
     height: 72px;
     width: 15%;
@@ -33,6 +34,10 @@
     object-fit: contain;
     padding: 10px;
     transition: all 0.3s;
+}
+.storeBrandImage:hover {
+    transform: scale(1.2);
+    background-color: blueviolet;
 }
 .btn {
     color: black;

@@ -30,10 +30,11 @@ const NavBar = ({admin}) => {
     }
 
     const logOut = () => {
+                user.setIsAuth(false)
+                logout()
         if (user.admin === 'ADMIN') {
             setTimeout(() => {
                 adminBtnText.current.style.opacity = '0'
-
             }, 500)
             setTimeout(() => {
                 adminBtn.current.style.width = '90px'
@@ -45,15 +46,15 @@ const NavBar = ({admin}) => {
                 adminBtn.current.style.opacity = '0'
             }, 2000)
             setTimeout( () => {
-                user.setIsAuth(false)
+
                 user.setAdmin('USER')
             }, 3000)
             setTimeout( () => {
 
-            }, 3000)
             user.setUser({})
+            }, 3000)
         }
-        logout()
+
     }
     return (
         <header className={styles.header}>
@@ -63,7 +64,7 @@ const NavBar = ({admin}) => {
                         <NavLink to={SHOP_ROUTE} className={styles.headerLink}>Store</NavLink>
                         <div className={styles.headerLogoBox}>
                             <img ref={logo} className={styles.logoImg} src={logoImg} alt="Ritter"/>
-                            {user.admin === 'ADMIN' && user.isAuth &&
+                            {user.admin === 'ADMIN' &&
                                 <div onClick={() => navigate(ADMIN_ROUTE)} ref={adminBtn}
                                      className={styles.headerBottomAdmin}>
                                     <p ref={adminBtnText}
